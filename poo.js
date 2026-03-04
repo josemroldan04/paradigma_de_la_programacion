@@ -27,3 +27,32 @@ const pizzaHawaina = new Pizza("delgada", "mediana", ["jamon", "piña", "queso"]
 console.log(pizzaHawaina.preparar());
 console.log(pizzaHawaina.hornear());
 console.log(pizzaHawaina.empacar());
+
+class Combos extends Pizza {
+   constructor(combo, cantidad, tamano, masa, ingredientes, bebida, postre) {
+      super(masa, tamano, ingredientes);
+      this.combo = combo;
+      this.cantidad = cantidad;
+      this.bebida = bebida;
+      this.postre = postre;
+   }
+
+   elegirCombo() {
+      this.preparar();
+      this.hornear();
+      this.empacar();
+
+      console.log(
+      `Has elegido el combo ${this.combo} que incluye ${this.cantidad} pizza de tamaño ${this.tamano}
+      con masa ${this.masa} y los siguientes ingridientes: ${this.ingredientes} . Ademas incluye, incluye una bebida de ${this.bebida}
+      y un postre de ${this.postre}.`
+      );
+      return this;
+   };
+
+}
+
+
+const comboFamiliar = new Combos("Familiar", 4, "grande", "delgada", ["jamon", "piña", "queso"],
+   "fresco", "helado");
+   console.log(comboFamiliar.elegirCombo());
